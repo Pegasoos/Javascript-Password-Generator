@@ -73,9 +73,12 @@ var options = getpassOptions();
 
 var result= [];
 
+var possibleChar = [];
+
 var guarenteedChar = [];
 
-var possibleChar = [];
+
+
 
 if(options.lowerConfirm){
   possibleChar = possibleChar.concat(lowerCase);
@@ -96,14 +99,15 @@ if(options.numericalConfirm){
   possibleChar = possibleChar.concat(numericalChar);
   guarenteedChar.push(getRand(numericalChar));
 }
-
+console.log(possibleChar)
+console.log(guarenteedChar)
 //For loop
-for(i = 0;i<getpassOptions.charNumber;i++){
+for(i = 0; i < options.charNumber; i++){
  var possibleChars = getRand(possibleChar);
  result.push(possibleChars)
 }
 //For loop
-for(i = 0;i<guarenteedChar.length;i++){
+for(i = 0; i  < guarenteedChar.length; i++){
   result[i] = guarenteedChar[i];
 }
 // Create Password String
@@ -119,7 +123,6 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
-  ;
 }
 console.log(password);
 // Add event listener to generate button
