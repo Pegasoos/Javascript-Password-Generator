@@ -67,7 +67,37 @@ function getRand(arr){
 }
 
 //Function to Generate Password
- function passGen() {
+function passGen() {
+
+var options = getpassOptions();
+
+var guarenteedChar = [];
+
+var possibleChar = [];
+
+if(options.lowerConfirm){
+  possibleChar = possibleChar.concat(lowerCase);
+  guarenteedChar = guarenteedChar.push(getRand(lowerCase));
+}
+
+if(options.specialConfirm){
+  possibleChar = possibleChar.concat(specialChars);
+  guarenteedChar = guarenteedChar.push(getRand(specialChars));
+}
+
+if(options.upperConfirm){
+  possibleChar = possibleChar.concat(upperCase);
+  guarenteedChar = guarenteedChar.push(getRand(upperCase));
+}
+
+if(options.numericalConfirm){
+  possibleChar = possibleChar.concat(numericalChar);
+  guarenteedChar = guarenteedChar.push(getRand(numericalChar));
+}
+
+//For loop
+
+//For loop
 
 // Create Password String
 return result.join('');
