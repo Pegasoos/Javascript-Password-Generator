@@ -60,16 +60,18 @@ if(
 
 //Function to Get Random Element From an Array
 function getRand(arr){
-  Math.floor(Math.random * arr.length);
+  var randIndex = Math.floor(Math.random() * arr.length);
   var randElement = arr[randIndex];
 
   return randElement;
 }
 
 //Function to Generate Password
-function passGen() {
+function generatePassword() {
 
 var options = getpassOptions();
+
+var result= [];
 
 var guarenteedChar = [];
 
@@ -77,28 +79,33 @@ var possibleChar = [];
 
 if(options.lowerConfirm){
   possibleChar = possibleChar.concat(lowerCase);
-  guarenteedChar = guarenteedChar.push(getRand(lowerCase));
+  guarenteedChar.push(getRand(lowerCase));
 }
 
 if(options.specialConfirm){
   possibleChar = possibleChar.concat(specialChars);
-  guarenteedChar = guarenteedChar.push(getRand(specialChars));
+  guarenteedChar.push(getRand(specialChars));
 }
 
 if(options.upperConfirm){
   possibleChar = possibleChar.concat(upperCase);
-  guarenteedChar = guarenteedChar.push(getRand(upperCase));
+  guarenteedChar.push(getRand(upperCase));
 }
 
 if(options.numericalConfirm){
   possibleChar = possibleChar.concat(numericalChar);
-  guarenteedChar = guarenteedChar.push(getRand(numericalChar));
+  guarenteedChar.push(getRand(numericalChar));
 }
 
 //For loop
-
+for(i = 0;i<getpassOptions.charNumber;i++){
+ var possibleChars = getRand(possibleChar);
+ result.push(possibleChars)
+}
 //For loop
-
+for(i = 0;i<guarenteedChar.length;i++){
+  result[i] = guarenteedChar[i];
+}
 // Create Password String
 return result.join('');
  };
